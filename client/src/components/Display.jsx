@@ -1,11 +1,11 @@
 import React from "react";
 import axios from "axios";
-import Carousel from './Carousel.jsx';
-import Display from './Display.jsx';
+import DisplayLeft from "./DisplayLeft";
+import DisplayRight from "./DisplayRight";	
+import styled from 'styled-components'
 
-import Navbar from './Navbar.jsx';
 
-class App extends React.Component {
+class Display extends React.Component {
 
     constructor(props) {
         super(props);
@@ -38,13 +38,37 @@ class App extends React.Component {
             return temp;
         }
 
+		
     render(){
+				var show = 
+				<div>
        
-        var show =  <div><Navbar/><br/> <Display/> <Carousel/></div>
+				BRYANT's DISPLAY [No text will be here] <Button>TEST</Button><br/>
+				<BigDiv className='display-big-container'>
+				<DisplayLeft/>
+				<DisplayRight/>
 
-      	return show;
+				</BigDiv>
+	
+				
+        </div>
+        return show;
     }
    
 }
 
- export default App;	
+const BigDiv = styled.div`
+	display:flex;
+	flex-direction: row;
+`
+
+const Button = styled.button`
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid palevioletred;
+  color: blue;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+`
+
+ export default Display;	

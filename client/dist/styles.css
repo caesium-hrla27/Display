@@ -1,0 +1,16 @@
+.holder-carousel{
+	clear: both;
+	float: left;
+	width: 100%;
+	background-color: burlywood;
+}
+.holder-navbar{
+	position: -webkit-sticky;
+  position: sticky;
+	top: 0px; /* required */
+	color: white;
+	clear: both;
+	float: left;
+	width: 100%;
+	background-color: rgb(119, 14, 84);
+}

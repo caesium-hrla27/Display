@@ -10,18 +10,14 @@ class Carousel extends React.Component {
             this_state_prop_another: "temp2",
         }
     }
-    
 
-
-    render(){
-       
+    render(){  
         var show = 
         <div className='holder-carousel'>
 						JEN'S CAROUSEL
         </div>
         return show;
     }
-   
 }
 
  export default Carousel;	

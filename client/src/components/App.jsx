@@ -40,7 +40,7 @@ class App extends React.Component {
 
     render(){
        
-        var show =  <div><Navbar/><br/> <Display/> <Carousel/></div>
+        var show =  <div><Navbar/><br/> <Display shoe_id="M1"/> <Carousel/></div>
 
       	return show;
     }

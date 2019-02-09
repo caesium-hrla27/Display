@@ -80,7 +80,7 @@ if (insert_dummy) {
           .create({
             shoe_id: "M" + i,
             color_id: "C" + j,
-            image_link: "TEMP_LINK_FOR_"+"M"+i+"C"+j+"O"+k,
+            image_link: "PIC_LINK_FOR_"+"M"+i+"C"+j+"O"+k,
             orientation: "O" + k
           })
           .then(() => console.log("sucess3"))

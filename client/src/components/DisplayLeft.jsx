@@ -1,5 +1,5 @@
 import React from "react";
-
+import _ from "underscore";
 import styled from "styled-components";
 
 const DivLeft = styled.div`
@@ -16,10 +16,7 @@ const DivLeft = styled.div`
 class DisplayLeft extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      this_state_prop1: "temp1",
-      this_state_prop_another: "temp2"
-    };
+    this.state = {};
     this.getUserName = this.getUserName.bind(this);
   }
 
@@ -30,7 +27,7 @@ class DisplayLeft extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    //alert('UnderConstruction')
+
     axios
       .post("api", this.state)
       .then(() => {})
@@ -41,9 +38,10 @@ class DisplayLeft extends React.Component {
 
   exposeState() {
     var temp = [];
+    temp.push(<div>EXPOSING STATE</div>);
     for (let key in this.state) {
       temp.push(
-        <div className="expose">
+        <div className="expose" key={key}>
           {" "}
           {key} : {this.state[key]}
         </div>
@@ -51,15 +49,36 @@ class DisplayLeft extends React.Component {
     }
     return temp;
   }
+  
+  // componentDidUpdate() {
+  //   console.log("update");
+  //   var obj = {
+  //     pictures: this.props.picture,
+  //     pic_direction: this.props.pic_direction
+  //   };
+
+  //   if (!_.isEqual(this.state, obj)) {
+  //     this.setState(obj);
+  //   }
+  // }
+	putPicInPlace(pics,pics_links){
+		var result = [];
+			if (Array.isArray(pics)){
+			for(let i = 0; i < pics.length; i++){
+				result.push(<div>{pics[i]} and {pics_links[i]}</div>);
+			}
+			pics.forEach((item)=>{
+			})
+		}
+		return result;
+	}
 
   render() {
     var show = (
       <DivLeft>
-        Left Side [THIS WILL NOT BE SEEN]
-        <div>
-          <div>PICTURE</div>
-          <div>TEMP</div>
-        </div>
+        {this.exposeState()}
+        {this.putPicInPlace(this.props.pictures,this.props.pic_direction)}
+        <div />
       </DivLeft>
     );
 

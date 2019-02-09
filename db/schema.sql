@@ -8,6 +8,7 @@ CREATE TABLE `items` (
   `item_name` varchar(255) DEFAULT NULL,
   `price` DECIMAL(5,2) DEFAULT NULL,
   `category` varchar(255) DEFAULT NULL,
+  `sold_out_size` varchar(255) DEFAULT NULL,
   `front_paragraph` varchar(4084) DEFAULT NULL,
   `complete_description` varchar(4096) DEFAULT NULL,
   PRIMARY KEY (`shoe_id`)

@@ -1,4 +1,21 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const LineOne = styled.div`
+
+color: red;
+`
+const Price = styled.div`
+float: right;
+`
+const Category = styled.div`
+float:left;
+color: green;
+`
+const ItemName = styled.div`
+clear: both;
+`
+
 class DisplayRightTitles extends React.Component {
 
 	constructor(props) {
@@ -36,7 +53,12 @@ class DisplayRightTitles extends React.Component {
 	render(){
 			var show = 
 			<div className='display-right-cartbar' >
-				DisplayRightTitles
+
+				<LineOne>
+					<Category> {this.props.category}</Category>
+					<Price >" "+${this.props.price}</Price>
+				</LineOne>
+				<ItemName>{this.props.name}</ItemName>
 			</div>
 			return show;
 	}

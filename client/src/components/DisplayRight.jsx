@@ -25,7 +25,8 @@ class DisplayRight extends React.Component {
     super(props);
     this.state = {
       this_state_prop1: "temp1",
-      this_state_prop_another: "temp2"
+			this_state_prop_another: "temp2",
+			stuff : props.stuff
     };
     this.getUserName = this.getUserName.bind(this);
   }
@@ -47,11 +48,11 @@ class DisplayRight extends React.Component {
 
   exposeState() {
     var temp = [];
-    for (let key in this.state) {
+    for (let key in this.props) {
       temp.push(
-        <div className="expose">
+        <div className="expose" key={key}>
           {" "}
-          {key} : {this.state[key]}
+          {key} : {this.props[key]}
         </div>
       );
     }
@@ -62,11 +63,12 @@ class DisplayRight extends React.Component {
     var show = (
       <DivRight>
         Right Side [This will not be seen]
-        <Title />
-        <Colors />
-        <Sizes />
+				{this.exposeState(this.props)}
+        <Title name = {this.props.item_name} category={this.props.category} price={this.props.price}/>
+        <Colors colors = {this.props.colors} text_of_colors = {this.props.text_of_colors}/>
+        <Sizes sizes = {this.props.sizes}/>
         <CartBar />
-        <Descriptions />
+        <Descriptions front = {this.props.front_paragraph} complete = {this.props.complete_description}/>
         <Reviews />
       </DivRight>
     );

@@ -3,16 +3,27 @@ import axios from "axios";
 import DisplayLeft from "./DisplayLeft";
 import DisplayRight from "./DisplayRight";	
 import styled from 'styled-components'
-
+import querystring from 'querystring';
 
 class Display extends React.Component {
 
     constructor(props) {
-        super(props);
+				super(props);
+				
         this.state = {
-            this_state_prop1: "temp1",
-            this_state_prop_another: "temp2",
-        }
+						shoe_id : props.shoe_id || 'M0',
+						this_color: 'C0',
+						colors : [],
+						text_of_colors: [],
+						pictures: "BROKEN",
+						pic_direction: "BROKEN",
+						category: "FAILED",
+						complete_description: "FAILED",
+						front_paragraph: "FAILED",
+						item_name: "FAILED",
+						price: "FAILED",
+				}
+				
         this.getUserName= this.getUserName.bind(this);
     }
     
@@ -20,7 +31,58 @@ class Display extends React.Component {
        this.state.username = e.target.value;
        this.setState(this.state);
     }
+		componentDidMount(){
+			
+			var qs1 = querystring.stringify({shoe_id:this.state.shoe_id});
+			var qs2 = querystring.stringify({color_id:this.state.this_color});
 
+			axios.get('/api/getinfo?'+qs1)
+			.then((res)=> {
+				console.log(res);
+
+				var obj = 
+				{
+					category : res.data.category,
+					complete_description : res.data.complete_description,
+					front_paragraph : res.data.front_paragraph,
+					sizes: res.data.sizes,
+					item_name : res.data.item_name,
+					price : res.data.price
+				}
+				this.setState(obj)
+			})
+			.catch((err)=> {console.log(err)})
+
+			axios.get('/api/getcolors?'+qs1)
+			.then((res)=> {
+
+				var colors = [];
+				var text_of_colors = [];
+
+				res.data.forEach(({color_id, text_of_color})=>{
+					colors.push(color_id);
+					text_of_colors.push(text_of_color)
+				});
+				this.setState({colors,text_of_colors})
+			})
+			.catch((err)=> {console.log('err2',err)})
+		
+
+			axios.get('/api/getpictures?'+qs1+"&"+qs2)
+			.then(
+				(res) => {
+				var pictures = [];
+				var pic_direction = [];
+				res.data.forEach(({orientation,image_link}) => {
+					pic_direction.push(orientation)
+					pictures.push(image_link)
+				})
+				this.setState({pictures,pic_direction});
+			})
+			.catch((err)=> {console.log(err)})
+
+			
+		}
     handleSubmit(e){
         e.preventDefault();
         //alert('UnderConstruction')
@@ -31,9 +93,12 @@ class Display extends React.Component {
     }
 
     exposeState(){
-        var temp = [];
+				var temp = [];
+				temp.push(<div>EXPOSING STATE</div>)
         for(let key in this.state){
-                temp.push(<div className = 'expose'> {key} : {this.state[key]}</div>)
+								if(typeof this.state[key] !== Array){
+								temp.push(<div className="expose" key={key}> {key} : {this.state[key]}</div>)
+							}
             }
             return temp;
         }
@@ -42,11 +107,24 @@ class Display extends React.Component {
     render(){
 				var show = 
 				<div>
-       
-				BRYANT's DISPLAY [No text will be here] <Button>TEST</Button><br/>
+			
+       {this.exposeState()}
+				<Button>TEST</Button><br/>
 				<BigDiv className='display-big-container'>
-				<DisplayLeft/>
-				<DisplayRight/>
+			
+				<DisplayLeft pictures = {this.state.pictures} pic_direction = {this.state.pic_direction}/>
+				<DisplayRight 
+					shoe_id = {this.state.shoe_id}
+					item_name= {this.state.item_name} 
+					price= {this.state.price} 
+					this_color= {this.state.this_color} 
+					sizes = {this.state.sizes}
+					colors= {this.state.colors} 
+					text_of_colors= {this.state.text_of_colors} 
+					category= {this.state.category} 
+					front_paragraph= {this.state.front_paragraph}
+					complete_description = {this.state.complete_description}
+				/>
 
 				</BigDiv>
 	

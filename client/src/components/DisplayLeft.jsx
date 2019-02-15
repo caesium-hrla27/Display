@@ -2,19 +2,10 @@ import React from "react";
 import _ from "underscore";
 import styled from "styled-components";
 
-const DivLeft = styled.div`
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  align-self: flex-start;
-  flex: 1;
-  width: auto;
-  background-color: palevioletred;
-  min-height: 900px;
-`;
 
 class DisplayLeft extends React.Component {
   constructor(props) {
+		
     super(props);
     this.state = {};
     this.getUserName = this.getUserName.bind(this);
@@ -62,28 +53,89 @@ class DisplayLeft extends React.Component {
   //   }
   // }
 	putPicInPlace(pics,pics_links){
-		var result = [];
+		//temp hardcode
+		var pics = ["/pics/m0c0o0.jpg","/pics/m0c0o1.jpg","/pics/m0c0o2.jpg",
+		"/pics/m0c0o3.jpg","/pics/m0c0o4.jpg","/pics/m0c0o5.jpg"]
+
+		var pic_list = [];
 			if (Array.isArray(pics)){
 			for(let i = 0; i < pics.length; i++){
-				result.push(<div>{pics[i]} and {pics_links[i]}</div>);
+				// pic_list.push(<div>{pics[i]} and {pics_links[i]}</div>);
+				pic_list.push(<PicButton><ShoePic src= {pics[i]} /> </PicButton>)
 			}
 			pics.forEach((item)=>{
 			})
 		}
-		return result;
+		return <PicList>{pic_list}</PicList>;
 	}
-
+	
   render() {
+	
     var show = (
       <DivLeft>
-        {this.exposeState()}
+        {/* {this.exposeState()} */}
         {this.putPicInPlace(this.props.pictures,this.props.pic_direction)}
-        <div />
+		
       </DivLeft>
     );
 
     return show;
   }
 }
+const ShoePic = styled.img`
+display: block
+width: 100%;
+vertical-align: baseline
+`
+const PicButton = styled.button`
+
+
+position: relative;
+font-size: 14px;
+line-height: 1.714285714285714;
+
+-webkit-tap-highlight-color: transparent;
+-webkit-appearance: none;
+
+align-items: flex-start;
+    text-align: center;
+    cursor: default;
+    color: buttontext;
+min-height: 1px;
+width: 50%;
+margin: 0em;
+margin-bottom:12px;
+padding-top: 0;
+padding-left:8px;
+padding-right:4px;
+padding-bottom: 0;
+border: none;
+
+overflow: visible;
+-webkit-tap-highlight-color: transparent;
+-webkit-appearance: none;
+box-sizing: border-box;
+
+outline: 0;
+background: transparent;
+vertical-align: baseline;
+cursor:pointer;
+		
+`
+const PicList = styled.div`
+display: inline-block table;
+box-sizing: inherit;
+margin-top: 44px;
+margin-left:4px;
+margin-right:-8px;
+padding-left:44px;
+padding-right:48px;
+`
+const DivLeft = styled.div`
+position: relative;
+display: inline-block;
+width: calc(100% - 456px);
+min-height: 1058px;
+`;
 
 export default DisplayLeft;

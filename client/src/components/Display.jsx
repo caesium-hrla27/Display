@@ -108,10 +108,11 @@ class Display extends React.Component {
 				var show = 
 				<div>
 			
-       {this.exposeState()}
-				<Button>TEST</Button><br/>
-				<BigDiv className='display-big-container'>
+       {/* {this.exposeState()}
+				<Button>TEST</Button><br/> */}
 			
+				<BigDiv className='display-big-container'>
+				
 				<DisplayLeft pictures = {this.state.pictures} pic_direction = {this.state.pic_direction}/>
 				<DisplayRight 
 					shoe_id = {this.state.shoe_id}
@@ -121,12 +122,14 @@ class Display extends React.Component {
 					sizes = {this.state.sizes}
 					colors= {this.state.colors} 
 					text_of_colors= {this.state.text_of_colors} 
+					text_of_SKU = {this.state.text_of_SKU}
 					category= {this.state.category} 
 					front_paragraph= {this.state.front_paragraph}
 					complete_description = {this.state.complete_description}
 				/>
 
 				</BigDiv>
+			
 	
 				
         </div>
@@ -134,10 +137,23 @@ class Display extends React.Component {
     }
    
 }
+const BiggerDiv = styled.div`
 
+	align-items: center;
+	justify-content: center;
+	display: block;
+`
 const BigDiv = styled.div`
+
+	max-width: 1440px;
+	width:100%;
+
 	display:flex;
 	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+
+	margin: 0px auto;
 `
 
 const Button = styled.button`

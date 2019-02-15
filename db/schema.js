@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require("./index.js");
-
+console.log("IRAN")
+let insert_dummy = false;
 const items = sequelize.define(
   "items",
   {
@@ -43,7 +44,7 @@ const item_pictures = sequelize.define(
 
 module.exports = {items,item_colors,item_pictures}
 
-let insert_dummy = false;
+
 
 if (insert_dummy) {
 
@@ -51,14 +52,15 @@ if (insert_dummy) {
   let test_items = 20;
   let test_colors = 2;
   let test_images = 5;
-
+//MAYBE REFATOR SIZE
   for (let i = 0; i < test_items; i++) {
     items
       .create({
         shoe_id: "M"+i,
         item_name: "Yike Air Min 5"+i,
         price: 419.99,
-        category: "Tripping Shoe",
+				category: "Tripping Shoe",
+				sold_out_size: '9.5',
         front_paragraph: "Shoe designed against elderlies",
         complete_description: "Will do later"
       })

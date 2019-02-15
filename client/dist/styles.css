@@ -1,6 +1,6 @@
 .holder-carousel{
 	clear: both;
-	float: left;
+
 	width: 100%;
 	background-color: burlywood;
 }
@@ -9,7 +9,12 @@
 	top: 0px; /* required */
 	color: white;
 	clear: both;
-	float: left;
+
 	width: 100%;
 	background-color: rgb(119, 14, 84);
+}
+
+body {
+	margin: 0px;
+	background-color: rgb(70, 14, 20);
 }

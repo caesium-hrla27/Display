@@ -15,7 +15,7 @@ class Navbar extends React.Component {
     render(){
         var show = 
         <div className='holder-navbar'>
-     	 MALI's NAVBAR
+     	 MALI's NAVBAR<div>BROKENESS TEST</div><div>BROKENESS TEST</div><div>BROKENESS TEST</div><div>BROKENESS TEST</div><div>BROKENESS TEST</div><div>BROKENESS TEST</div><div>BROKENESS TEST</div>
         </div>
         return show;
     }

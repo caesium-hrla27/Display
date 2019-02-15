@@ -1,20 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const LineOne = styled.div`
-
-color: red;
-`
-const Price = styled.div`
-float: right;
-`
-const Category = styled.div`
-float:left;
-color: green;
-`
-const ItemName = styled.div`
-clear: both;
-`
 
 class DisplayRightTitles extends React.Component {
 
@@ -52,17 +38,42 @@ class DisplayRightTitles extends React.Component {
 	
 	render(){
 			var show = 
-			<div className='display-right-cartbar' >
-
+			<TitleContainer>
 				<LineOne>
 					<Category> {this.props.category}</Category>
-					<Price >" "+${this.props.price}</Price>
+					<Price >${this.props.price}</Price>
 				</LineOne>
 				<ItemName>{this.props.name}</ItemName>
-			</div>
+			</TitleContainer>
 			return show;
 	}
  
 }
+const TitleContainer = styled.div`
+padding-bottom: 32px;
+margin-bottom: 32px;
+`
+const LineOne = styled.div`
+font-size: 16px;
+line-height: 1.5;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+`
+const Price = styled.div`
+float: right;
+`
+const Category = styled.div`
+float:left;
+
+`
+const ItemName = styled.div`
+clear: both;
+font-weight: 500;
+line-height: 1.2;
+letter-spacing: 0.007em;
+font-size: 28px;
+display: block;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+`
+
 
 export default DisplayRightTitles;	

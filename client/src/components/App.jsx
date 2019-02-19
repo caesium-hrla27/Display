@@ -22,12 +22,13 @@ class App extends React.Component {
         var show =  
 				<div>
 					 <Display shoe_id="M1"/>
-					  <Carousel/>
+					  {/* <Carousel/> */}
 						</div>
 
       	return show;
     }
    
 }
+
 
  export default App;	

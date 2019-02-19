@@ -24,14 +24,42 @@ class Display extends React.Component {
 						price: "FAILED",
 				}
 				
-        this.getUserName= this.getUserName.bind(this);
+     
     }
-    
-    getUserName(e) {
-       this.state.username = e.target.value;
-       this.setState(this.state);
-    }
-		componentDidMount(){
+		
+		showGallery(e){
+			var pics = [
+				"/pics/m0c0o0.jpg",
+				"/pics/m0c0o1.jpg",
+				"/pics/m0c0o2.jpg",
+				"/pics/m0c0o3.jpg",
+				"/pics/m0c0o4.jpg",
+				"/pics/m0c0o5.jpg"
+			];
+	
+			var pic_list = [];
+			
+			if (Array.isArray(pics)) {
+				
+				for (let i = 0; i < pics.length; i++) {
+					// pic_list.push(<div>{pics[i]} and {pics_links[i]}</div>);
+					pic_list.push(
+					<PicSpan>  <ShoePic src={pics[i]} /></PicSpan>
+					);
+				}
+		
+
+			
+				return <Gallery>		 {pic_list}</Gallery>;
+			} else {
+				return "ERROR";
+			}
+			
+			
+		}
+
+	
+			componentDidMount(){
 			
 			var qs1 = querystring.stringify({shoe_id:this.state.shoe_id});
 			var qs2 = querystring.stringify({color_id:this.state.this_color});
@@ -105,12 +133,8 @@ class Display extends React.Component {
 
 		
     render(){
+
 				var show = 
-				<div>
-			
-       {/* {this.exposeState()}
-				<Button>TEST</Button><br/> */}
-			
 				<BigDiv className='display-big-container'>
 				
 				<DisplayLeft pictures = {this.state.pictures} pic_direction = {this.state.pic_direction}/>
@@ -127,16 +151,42 @@ class Display extends React.Component {
 					front_paragraph= {this.state.front_paragraph}
 					complete_description = {this.state.complete_description}
 				/>
-
+			
 				</BigDiv>
+			
 			
 	
 				
-        </div>
+       
         return show;
     }
    
 }
+const PicSpan = styled.span`
+display: block;
+padding-right: 8px;
+padding-left: 8px;
+padding-bottom: 8px;
+// padding-top: 8px;
+`
+const Gallery = styled.div`
+z-index: 1;
+position: fixed;
+
+display: block;
+
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: rgb(255, 255, 255);
+		overflow: scroll;
+
+		padding-top: 40px;
+    padding-bottom: 40px;
+
+`
+
 const BiggerDiv = styled.div`
 
 	align-items: center;
@@ -154,6 +204,7 @@ const BigDiv = styled.div`
 	justify-content: center;
 
 	margin: 0px auto;
+	overflow: invisible;
 `
 
 const Button = styled.button`
@@ -164,5 +215,9 @@ const Button = styled.button`
   margin: 0 1em;
   padding: 0.25em 1em;
 `
-
+const ShoePic = styled.img`
+display: block
+width: 100%;
+vertical-align: baseline
+`;
  export default Display;	

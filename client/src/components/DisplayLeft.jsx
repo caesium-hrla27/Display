@@ -1,7 +1,7 @@
 import React from "react";
 import _ from "underscore";
 import styled from "styled-components";
-
+import $ from "jquery";
 class DisplayLeft extends React.Component {
   constructor(props) {
     super(props);
@@ -25,23 +25,15 @@ class DisplayLeft extends React.Component {
 
   putPicInPlace(pics, pics_links) {
     //temp hardcode
-    var pics = [
-      "/pics/m0c0o0.jpg",
-      "/pics/m0c0o1.jpg",
-      "/pics/m0c0o2.jpg",
-      "/pics/m0c0o3.jpg",
-      "/pics/m0c0o4.jpg",
-      "/pics/m0c0o5.jpg"
-    ];
 
     var pic_list = [];
 
-    if (Array.isArray(pics)) {
-      for (let i = 0; i < pics.length; i++) {
+    if (Array.isArray(this.props.pictures)) {
+      for (let i = 0; i < this.props.pictures.length; i++) {
         // pic_list.push(<div>{pics[i]} and {pics_links[i]}</div>);
         pic_list.push(
           <PicButton onClick={this.clickPic}>
-            <ShoePic src={pics[i]} />
+            <ShoePic src={"/pics/"+this.props.pictures[i]+".jpg" }/>
           </PicButton>
         );
       }
@@ -58,14 +50,6 @@ class DisplayLeft extends React.Component {
   }
 
   showGallery(e) {
-    var pics = [
-      "/pics/m0c0o0.jpg",
-      "/pics/m0c0o1.jpg",
-      "/pics/m0c0o2.jpg",
-      "/pics/m0c0o3.jpg",
-      "/pics/m0c0o4.jpg",
-      "/pics/m0c0o5.jpg"
-    ];
 
     var pic_list = [
       <ExitButton onClick={() => this.setState({ showBig: false })}>
@@ -73,17 +57,18 @@ class DisplayLeft extends React.Component {
       </ExitButton>
     ];
 
-    if (Array.isArray(pics)) {
-      for (let i = 0; i < pics.length; i++) {
+   
+    if (Array.isArray(this.props.pictures)) {
+      for (let i = 0; i < this.props.pictures.length; i++) {
         // pic_list.push(<div>{pics[i]} and {pics_links[i]}</div>);
         pic_list.push(
           <PicSpan>
             {" "}
-            <ShoePic src={pics[i]} />
+            <ShoePic src={"/pics/"+this.props.pictures[i]+".jpg"} />
           </PicSpan>
         );
       }
-      pics.forEach(item => {});
+     
     }
 
     return <Gallery>{pic_list}</Gallery>;
@@ -91,20 +76,25 @@ class DisplayLeft extends React.Component {
 
   render() {
 
-    var part1 = this.putPicInPlace(
+    var gallery = this.putPicInPlace(
       this.props.pictures,
       this.props.pic_direction
     );
-		var part2 = "";
+		var overlay= "";
 		
     if (this.state.showBig) {
-      part2 = this.showGallery(this.props.pictures, this.props.pic_direction);
-    }
+			$("body").css("overflow", "hidden");
+      overlay = this.showGallery(this.props.pictures, this.props.pic_direction);
+		} else {
+			$("body").css("overflow", "scroll");
+		}
+		
+
 
     var show = (
       <DivLeft>
-        {part1}
-        {part2}
+        {gallery}
+        {overlay}
       </DivLeft>
 		);
 		
@@ -131,7 +121,8 @@ const Gallery = styled.div`
   overflow: scroll;
 
   padding-top: 40px;
-  padding-bottom: 40px;
+	padding-bottom: 40px;
+	overflow : scroll;
 `;
 
 const ExitButton = styled.div`
@@ -159,12 +150,14 @@ content: "\E656";
   transition: all 0.2s ease;
   font-size: 24px;
   line-height: 1;
-  font-family: nike-glyphs;
+	font-family: nike-glyphs;
+	overflow : hidden;
 `;
 const ShoePic = styled.img`
 	display: block
 	width: 100%;
 	vertical-align: baseline
+	overflow : hidden;
 `;
 const PicButton = styled.button`
   position: relative;
@@ -196,7 +189,8 @@ const PicButton = styled.button`
   outline: 0;
   background: transparent;
   vertical-align: baseline;
-  cursor: pointer;
+	cursor: pointer;
+	overflow : hidden;
 `;
 const PicList = styled.div`
   display: inline-block table;
@@ -205,13 +199,15 @@ const PicList = styled.div`
   margin-left: 4px;
   margin-right: -8px;
   padding-left: 44px;
-  padding-right: 48px;
+	padding-right: 48px;
+	overflow : hidden;
 `;
 const DivLeft = styled.div`
   position: relative;
   display: inline-block;
   width: calc(100% - 456px);
-  min-height: 1058px;
+
+	overflow : hidden;
 `;
 
 export default DisplayLeft;

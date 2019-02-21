@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize');
 const sequelize = require("./index.js");
-console.log("IRAN")
-let insert_dummy = false;
+console.log("schema.js is ran")
+let insert_dummy = true;
+
 const items = sequelize.define(
   "items",
   {
@@ -16,6 +17,7 @@ const items = sequelize.define(
     timestamps: false
   }
 );
+
 //tuple to be unqique
 const item_colors = sequelize.define(
   "item_colors",
@@ -28,6 +30,7 @@ const item_colors = sequelize.define(
     timestamps: false
   }
 );
+
 //triple to be unqique
 const item_pictures = sequelize.define(
   "item_pictures",
@@ -49,9 +52,9 @@ module.exports = {items,item_colors,item_pictures}
 if (insert_dummy) {
 
 
-  let test_items = 20;
-  let test_colors = 2;
-  let test_images = 5;
+  let test_items = 50;
+  let test_colors = 4 ;
+  let test_images = 6;
 //MAYBE REFATOR SIZE
   for (let i = 0; i < test_items; i++) {
     items
@@ -72,7 +75,7 @@ if (insert_dummy) {
         .create({
           shoe_id: "M" + i,
           color_id: "C" + j,
-          color_text: "DESCRIPTION_FOR_" +"M"+i+"C"+j
+          color_text: "DESCRIPTION_FOR_" +"M"+i+"C"+j //ipsum
         })
         .then(() => console.log("sucess2"))
         .catch((err, data) => console.log("err2"));
@@ -81,8 +84,8 @@ if (insert_dummy) {
         item_pictures
           .create({
             shoe_id: "M" + i,
-            color_id: "C" + j,
-            image_link: "PIC_LINK_FOR_"+"M"+i+"C"+j+"O"+k,
+            color_id: "c" + j,
+            image_link: "m"+i+"c"+j+"o"+k,
             orientation: "O" + k
           })
           .then(() => console.log("sucess3"))

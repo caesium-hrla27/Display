@@ -33,11 +33,11 @@ class DisplayRight extends React.Component {
       <DivRight>
 				<RightRail>
 					<Title name = {this.props.item_name} category={this.props.category} price={this.props.price}/>
-					<Colors colors = {this.props.colors} text_of_colors = {this.props.text_of_colors}/>
+					<Colors colors = {this.props.colors} text_of_colors = {this.props.text_of_colors} changeCurrentColor = {this.props.changeCurrentColor}/>
 					<Sizes sizes = {this.props.sizes}/>
        	  <CartBar/>
 					{/* todo get the right color index. */}
-        	<Descriptions front = {this.props.front_paragraph}  text_of_colors = {this.props.text_of_colors} product_SKU = {"temp sku"}complete = {this.props.complete_description}/>
+        	<Descriptions front = {this.props.front_paragraph}  text_of_colors = {this.props.text_of_colors}  product_SKU= {this.props.shoe_id+this.props.current_color}current_color = {this.props.current_color} complete = {this.props.complete_description}/>
 					<Reviews />
 				</RightRail>
       </DivRight>

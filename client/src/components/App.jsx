@@ -21,7 +21,7 @@ class App extends React.Component {
        
         var show =  
 				<div>
-					 <Display shoe_id="M1"/>
+					 <Display shoe_id="M0"/>
 					  {/* <Carousel/> */}
 						</div>
 

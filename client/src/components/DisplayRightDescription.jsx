@@ -28,13 +28,13 @@ class DisplayRightDescription extends React.Component {
 
     var show = (
       <DivDescriptionContainer>
-{/* TODO HERE */}
-        <DivText><p>{this.state.front2}</p></DivText>
+
+        <DivText><p>{this.props.front}</p></DivText>
 
         <DivColorSku>
           <ul>
-            <li>Shown: {this.props.text_of_colors[0]} </li>
-            <li >Style: {this.props.product_SKU}</li>
+            <li> Shown: { this.props.text_of_colors[this.props.current_color[1]]} </li>
+            <li> Style: { this.props.product_SKU}</li>
           </ul>
         </DivColorSku>
 
@@ -84,11 +84,7 @@ list-style: none;
 
 display: block;
 
-margin-block-start: 1em;
-margin-block-end: 1em;
-margin-inline-start: 0px;
-margin-inline-end: 0px;
-padding-inline-start: 40px;
+
 
 	}
 	
@@ -128,7 +124,7 @@ text-indent: 0px;
 text-shadow: none;
 
 margin: 0em;
-font: 500 16px system-ui;
+font: 400 16px system-ui;
 
 & span{
 	color: black;

@@ -10,7 +10,7 @@ class Display extends React.Component {
     super(props);
 
     this.state = {
-      shoe_id: props.shoe_id || "M0",
+      shoe_id: props.shoe_id || "M1",
       this_color: "C0",
       colors: [],
       text_of_colors: [],

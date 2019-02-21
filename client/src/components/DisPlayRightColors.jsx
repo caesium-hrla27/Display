@@ -20,7 +20,7 @@ class DisplayRightColors extends React.Component {
     return temp;
   }
 
-  showColors(colors) {
+  showColors(id, colors) {
     //todo, image is squashed, bc thumbnail
     var result = [];
 
@@ -29,7 +29,7 @@ class DisplayRightColors extends React.Component {
         <PictureWrapper>
 					
           <ColorThumb
-            src={"/pics/m0"+colors[i]+"o0.jpg"}
+            src={"/pics/"+id+colors[i]+"o0.jpg"}
             title={this.props.text_of_colors[i]}
 						style= { { width: "100%", height: "100%" } }
 						id= {"C"+i}
@@ -45,7 +45,7 @@ class DisplayRightColors extends React.Component {
   render() {
     var show = (
       <ColorsContainer>
-        {this.showColors(this.props.colors)}
+        {this.showColors(this.props.shoe_id, this.props.colors)}
       </ColorsContainer>
     );
 

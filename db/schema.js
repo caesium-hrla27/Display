@@ -11,7 +11,7 @@ const items = sequelize.define(
     price: Sequelize.DECIMAL(5, 2),
     category: Sequelize.STRING,
     front_paragraph: Sequelize.STRING,
-    complete_description: Sequelize.STRING
+		complete_description: Sequelize.STRING
   },
   {
     timestamps: false
@@ -24,7 +24,8 @@ const item_colors = sequelize.define(
   {
     shoe_id: { type: Sequelize.STRING, primaryKey: true },
     color_id: { type: Sequelize.STRING, primaryKey: true },
-    text_of_color: Sequelize.STRING
+		text_of_color: Sequelize.STRING,
+		SKU: Sequelize.STRING
   },
   {
     timestamps: false
@@ -75,7 +76,8 @@ if (insert_dummy) {
         .create({
           shoe_id: "M" + i,
           color_id: "C" + j,
-          color_text: "DESCRIPTION_FOR_" +"M"+i+"C"+j //ipsum
+					color_text: "DESCRIPTION_FOR_" +"M"+i+"C"+j, //ipsum
+					SKU: "m"+i+"c"+j
         })
         .then(() => console.log("sucess2"))
         .catch((err, data) => console.log("err2"));

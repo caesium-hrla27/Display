@@ -115,8 +115,6 @@ width: 100%;
 -webkit-font-smoothing: antialiased;
 
 vertical-align: baseline;
-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-
 
 cursor: pointer;
 color: #111;
@@ -131,7 +129,6 @@ display: inline-flex;
 align-items: center;
 justify-content: center;
 
-
 border:0px;
 border-radius: 4px;
 font: inherit;
@@ -142,8 +139,6 @@ box-shadow: 0px 0px 0px 1px #e5e5e5;
  }
 
 
-
-
 -webkit-box-align: center;
 -webkit-align-items: center;
 -webkit-box-pack: center;
@@ -152,11 +147,10 @@ box-shadow: 0px 0px 0px 1px #e5e5e5;
 margin-right: 0;
 margin-bottom: 0;
 
-
-
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 		
 `;
-const SizeOverAllContainer = styled.div``;
+
 const SizeTitleContainer = styled.div`
   display: flex;
   justify-content: space-between;

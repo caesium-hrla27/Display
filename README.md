@@ -1,2 +1,2 @@
 # Display
-FE Mock up of display module.
+This repo is a mock-up of main product display component of Nike website.

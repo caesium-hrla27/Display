@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require("./index.js");
 console.log("schema.js is ran")
-let insert_dummy = true;
+let insert_dummy = false;
 
 const items = sequelize.define(
   "items",

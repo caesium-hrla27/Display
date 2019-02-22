@@ -33,7 +33,7 @@ class DisplayLeft extends React.Component {
         // pic_list.push(<div>{pics[i]} and {pics_links[i]}</div>);
         pic_list.push(
           <PicButton onClick={this.clickPic}>
-            <ShoePic src={"/pics/"+this.props.pictures[i]+".jpg" }/>
+            <ShoePic src={this.props.pichost+this.props.pictures[i]+".jpg" }/>
           </PicButton>
         );
       }

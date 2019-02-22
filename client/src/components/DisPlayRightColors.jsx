@@ -29,7 +29,7 @@ class DisplayRightColors extends React.Component {
         <PictureWrapper>
 					
           <ColorThumb
-            src={"/pics/"+id+colors[i]+"o0.jpg"}
+            src={this.props.pichost+id.toLowerCase()+colors[i].toLowerCase()+"o0.jpg"}
             title={this.props.text_of_colors[i]}
 						style= { { width: "100%", height: "100%" } }
 						id= {"C"+i}

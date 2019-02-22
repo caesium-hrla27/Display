@@ -15,25 +15,14 @@ class DisplayRight extends React.Component {
 
   }
 
-  exposeState() {
-    var temp = [];
-    for (let key in this.props) {
-      temp.push(
-        <div className="expose" key={key}>
-          {" "}
-          {key} : {this.props[key]}
-        </div>
-      );
-    }
-    return temp;
-  }
+
 
   render() {
     var show = (
       <DivRight>
 				<RightRail>
 					<Title name = {this.props.item_name} category={this.props.category} price={this.props.price}/>
-					<Colors shoe_id = {this.props.shoe_id} colors = {this.props.colors} text_of_colors = {this.props.text_of_colors} changeCurrentColor = {this.props.changeCurrentColor}/>
+					<Colors pichost= {this.props.pichost} shoe_id = {this.props.shoe_id} colors = {this.props.colors} text_of_colors = {this.props.text_of_colors} changeCurrentColor = {this.props.changeCurrentColor}/>
 					<Sizes sizes = {this.props.sizes}/>
        	  <CartBar/>
 					{/* todo get the right color index. */}

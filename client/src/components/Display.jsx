@@ -21,7 +21,8 @@ class Display extends React.Component {
       complete_description: "FAILED TO FETCH",
       front_paragraph: "FAILED TO FETCH",
       item_name: "FAILED TO FETCH",
-      price: "FAILED TO FETCH"
+			price: "FAILED TO FETCH",
+			pichost: "https://s3-us-west-1.amazonaws.com/fec-display-module/"
     };
     this.changeCurrentColor = this.changeCurrentColor.bind(this);
 	}
@@ -145,7 +146,8 @@ class Display extends React.Component {
         <DisplayLeft
           pictures={this.state.pictures}
           pic_direction={this.state.pic_direction}
-          current_color={this.state.current_color}
+					current_color={this.state.current_color}
+					pichost = {this.state.pichost}
         />
 
         <DisplayRight
@@ -162,6 +164,7 @@ class Display extends React.Component {
           complete_description={this.state.complete_description}
 					current_color={this.state.current_color}
 					changeCurrentColor = {this.changeCurrentColor}
+					pichost = {this.state.pichost}
         />
       </BigDiv>
     );

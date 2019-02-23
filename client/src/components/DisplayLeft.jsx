@@ -1,7 +1,8 @@
 import React from "react";
-import _ from "underscore";
-import styled from "styled-components";
+
 import $ from "jquery";
+import style from './modstyle.css'
+
 class DisplayLeft extends React.Component {
   constructor(props) {
     super(props);
@@ -9,40 +10,21 @@ class DisplayLeft extends React.Component {
     this.clickPic = this.clickPic.bind(this);
   }
 
-  exposeState() {
-    var temp = [];
-    temp.push(<div>EXPOSING STATE</div>);
-    for (let key in this.state) {
-      temp.push(
-        <div className="expose" key={key}>
-          {" "}
-          {key} : {this.state[key]}
-        </div>
-      );
-    }
-    return temp;
-  }
+  putPicInPlace(pics) {
 
-  putPicInPlace(pics, pics_links) {
-    //temp hardcode
-
-    var pic_list = [];
-
+    var result = [];
     if (Array.isArray(this.props.pictures)) {
       for (let i = 0; i < this.props.pictures.length; i++) {
-        // pic_list.push(<div>{pics[i]} and {pics_links[i]}</div>);
-        pic_list.push(
-          <PicButton onClick={this.clickPic}>
-            <ShoePic src={this.props.pichost+this.props.pictures[i]+".jpg" }/>
-          </PicButton>
+        result.push(
+          <button className={style.picButton} onClick={this.clickPic}>
+            <img className={style.shoePic} src={this.props.pichost + this.props.pictures[i]+".jpg" }/>
+          </button>
         );
       }
-      pics.forEach(item => {});
     }
-
-    return <PicList>{pic_list}</PicList>;
-  }
-
+    return <div className={style.picList}>{result}</div>;
+	}
+	
   clickPic() {
     console.log("clicked picture");
     this.setState({ showBig: true });
@@ -52,9 +34,9 @@ class DisplayLeft extends React.Component {
   showGallery(e) {
 
     var pic_list = [
-      <ExitButton onClick={() => this.setState({ showBig: false })}>
+      <div className={style.exitButton} onClick={() => this.setState({ showBig: false })}>
         X
-      </ExitButton>
+      </div>
     ];
 
    
@@ -62,16 +44,16 @@ class DisplayLeft extends React.Component {
       for (let i = 0; i < this.props.pictures.length; i++) {
         // pic_list.push(<div>{pics[i]} and {pics_links[i]}</div>);
         pic_list.push(
-          <PicSpan>
+          <span className={style.picSpan}>
             {" "}
-            <ShoePic src={"/pics/"+this.props.pictures[i]+".jpg"} />
-          </PicSpan>
+            <img className={style.shoePic} src={this.props.pichost+this.props.pictures[i]+".jpg"} />
+          </span>
         );
       }
      
     }
-
-    return <Gallery>{pic_list}</Gallery>;
+		// return <Gallery>{pic_list}</Gallery>;
+		return <div className={style.galleryOverlay}>{pic_list}</div>;
   }
 
   render() {
@@ -92,122 +74,38 @@ class DisplayLeft extends React.Component {
 
 
     var show = (
-      <DivLeft>
+      <div className={style.divLeft}>
         {gallery}
         {overlay}
-      </DivLeft>
+      </div>
 		);
 		
     return show;
   }
 }
-const PicSpan = styled.span`
-  display: block;
-  padding-right: 8px;
-  padding-left: 8px;
-  padding-bottom: 8px;
-`;
-const Gallery = styled.div`
-  z-index: 1;
-  position: fixed;
 
-  display: block;
 
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  background-color: rgb(255, 255, 255);
-  overflow: scroll;
 
-  padding-top: 40px;
-	padding-bottom: 40px;
-	overflow : scroll;
-`;
 
-const ExitButton = styled.div`
-content: "\E656";
 
-  z-index: 2;
-  outline: 0;
-  position: fixed;
-  top: 0px;
-  right: 0px;
-  font-weight: 700;
-  padding: 40px;
 
-  display: inline-block;
-  vertical-align: top;
-  white-space: nowrap;
-  text-align: center;
-  text-decoration: none;
-  background: 0 0;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  cursor: pointer;
-  -webkit-transition: all 0.2s ease;
-  -o-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-  font-size: 24px;
-  line-height: 1;
-	font-family: nike-glyphs;
-	overflow : hidden;
-`;
-const ShoePic = styled.img`
-	display: block
-	width: 100%;
-	vertical-align: baseline
-	overflow : hidden;
-`;
-const PicButton = styled.button`
-  position: relative;
-  font-size: 14px;
-  line-height: 1.714285714285714;
 
-  -webkit-tap-highlight-color: transparent;
-  -webkit-appearance: none;
+// const GalleryPopUp = styled.div`
+//   z-index: 1;
+//   position: fixed;
 
-  align-items: flex-start;
-  text-align: center;
-  cursor: default;
-  color: buttontext;
-  min-height: 1px;
-  width: 50%;
-  margin: 0em;
-  margin-bottom: 12px;
-  padding-top: 0;
-  padding-left: 8px;
-  padding-right: 4px;
-  padding-bottom: 0;
-  border: none;
+//   display: block;
 
-  overflow: visible;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-appearance: none;
-  box-sizing: border-box;
+//   top: 0px;
+//   bottom: 0px;
+//   left: 0px;
+//   right: 0px;
+//   background-color: rgb(255, 255, 255);
+//   overflow: scroll;
 
-  outline: 0;
-  background: transparent;
-  vertical-align: baseline;
-	cursor: pointer;
-	overflow : hidden;
-`;
-const PicList = styled.div`
-  display: inline-block table;
-  box-sizing: inherit;
-  margin-top: 44px;
-  margin-left: 4px;
-  margin-right: -8px;
-  padding-left: 44px;
-	padding-right: 48px;
-	overflow : hidden;
-`;
-const DivLeft = styled.div`
-  position: relative;
-  display: inline-block;
-  width: calc(100% - 456px);
-
-	overflow : hidden;
-`;
+//   padding-top: 40px;
+// 	padding-bottom: 40px;
+// 	overflow : scroll;
+// `;
 
 export default DisplayLeft;

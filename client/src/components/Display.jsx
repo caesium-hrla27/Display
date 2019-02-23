@@ -2,8 +2,8 @@ import React from "react";
 import axios from "axios";
 import DisplayLeft from "./DisplayLeft";
 import DisplayRight from "./DisplayRight";
-import styled from "styled-components";
 import querystring from "querystring";
+import style from './modstyle.css'
 
 class Display extends React.Component {
   constructor(props) {
@@ -142,7 +142,7 @@ class Display extends React.Component {
 
   render() {
     var show = (
-      <BigDiv className="display-big-container">
+      <div className={style.big_container}>
         <DisplayLeft
           pictures={this.state.pictures}
           pic_direction={this.state.pic_direction}
@@ -166,7 +166,7 @@ class Display extends React.Component {
 					changeCurrentColor = {this.changeCurrentColor}
 					pichost = {this.state.pichost}
         />
-      </BigDiv>
+      </div>
     );
 
     return show;
@@ -174,23 +174,6 @@ class Display extends React.Component {
 }
 
 
-const BiggerDiv = styled.div`
-  align-items: center;
-  justify-content: center;
-  display: block;
-`;
-const BigDiv = styled.div`
-  max-width: 1440px;
-  width: 100%;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-
-  margin: 0px auto;
-  overflow: invisible;
-`;
 
 
 

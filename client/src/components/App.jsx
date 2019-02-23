@@ -1,5 +1,6 @@
 import React from "react";
 import Display from './Display.jsx';
+import style from './modstyle.css'
 
 class App extends React.Component {
 
@@ -14,6 +15,8 @@ class App extends React.Component {
        {var rand = Math.round(Math.random())}
         var show =  
 				<div>
+					{console.log("whatisstyle", style)}
+					<div className={style.style1}>ABC</div>
 					 <Display shoe_id={"M"+rand}/>
 					  {/* <Carousel/> */}
 						</div>

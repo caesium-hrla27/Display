@@ -1,12 +1,11 @@
 import React from "react";
-import styled from "styled-components";
 import Title from "./DisplayRightTitles.jsx";
 import Colors from "./DisplayRightColors.jsx";
 import Sizes from "./DisplayRightSizeSections.jsx";
 import CartBar from "./DisplayRightCartBar.jsx";
 import Descriptions from "./DisplayRightDescription.jsx";
 import Reviews from "./DisplayRightReviews.jsx";
-
+import style from './modstyle.css'
 class DisplayRight extends React.Component {
   constructor(props) {
     super(props);
@@ -19,8 +18,8 @@ class DisplayRight extends React.Component {
 
   render() {
     var show = (
-      <DivRight>
-				<RightRail>
+      <div className = {style.rightDiv}>
+				<div className = {style.rightRail}>
 					<Title name = {this.props.item_name} category={this.props.category} price={this.props.price}/>
 					<Colors pichost= {this.props.pichost} shoe_id = {this.props.shoe_id} colors = {this.props.colors} text_of_colors = {this.props.text_of_colors} changeCurrentColor = {this.props.changeCurrentColor}/>
 					<Sizes sizes = {this.props.sizes}/>
@@ -28,29 +27,14 @@ class DisplayRight extends React.Component {
 					{/* todo get the right color index. */}
         	<Descriptions front = {this.props.front_paragraph}  text_of_colors = {this.props.text_of_colors}  product_SKU= {this.props.shoe_id+this.props.current_color}current_color = {this.props.current_color} complete = {this.props.complete_description}/>
 					<Reviews />
-				</RightRail>
-      </DivRight>
+				</div>
+      </div>
     );
     return show;
   }
 }
-const DivRight = styled.div`
-  position: -webkit-sticky;
-  position: sticky;
-  bottom: 30px;
-  
-  max-width: 456px;
-  min-width: 456px;
-	background-color: white;
-	margin-top: 44px;
-`;
 
-const RightRail = styled.div`
-padding-right: 48px;
-padding-left: 24px;
-padding-top: 4px;
-margin-right: 7px;
-`
+
 
 
 export default DisplayRight;

@@ -4,7 +4,7 @@ const parser = require('body-parser')
 const path = require('path');
 const routes = require('./routes.js');
 
-var port = 3002;
+var port = 3010;
 var app = express();
 app.use(parser.json())
 app.use(parser.urlencoded({extended: 'true'}))

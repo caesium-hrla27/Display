@@ -23,10 +23,11 @@ class DisplayRightDescription extends React.Component {
 						 	Style: {this.props.product_SKU}
 						</li>
           </ul>
-
+				
         <button className={style.readMoreButton}>
           <span>Read More</span>
         </button>
+				<div style={{height:"40px"}}></div>
       </div>
 		);
 		

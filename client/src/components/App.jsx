@@ -15,8 +15,6 @@ class App extends React.Component {
        {var rand = Math.round(Math.random())}
         var show =  
 				<div>
-					{console.log("whatisstyle", style)}
-					<div className={style.style1}>ABC</div>
 					 <Display shoe_id={"M"+rand}/>
 					  {/* <Carousel/> */}
 						</div>

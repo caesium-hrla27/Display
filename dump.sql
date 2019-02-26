@@ -29,7 +29,7 @@ CREATE TABLE `item_colors` (
   PRIMARY KEY (`shoe_id`,`color_id`),
   KEY `color_index` (`color_id`),
   CONSTRAINT `item_colors_2_items_shoe_id` FOREIGN KEY (`shoe_id`) REFERENCES `items` (`shoe_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -58,7 +58,7 @@ CREATE TABLE `item_pictures` (
   KEY `pictures_2_color_fkc` (`color_id`),
   CONSTRAINT `pictures_2_color_fkc` FOREIGN KEY (`color_id`) REFERENCES `item_colors` (`color_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `pictures_2_item_fkc` FOREIGN KEY (`shoe_id`) REFERENCES `items` (`shoe_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -87,7 +87,7 @@ CREATE TABLE `items` (
   `front_paragraph` varchar(4084) DEFAULT NULL,
   `complete_description` varchar(4096) DEFAULT NULL,
   PRIMARY KEY (`shoe_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -109,4 +109,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-25 19:38:54
+-- Dump completed on 2019-02-25 19:42:18

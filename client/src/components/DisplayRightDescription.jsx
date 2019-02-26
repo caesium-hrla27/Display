@@ -27,7 +27,7 @@ class DisplayRightDescription extends React.Component {
         <button className={style.readMoreButton}>
           <span>Read More</span>
         </button>
-				<div style={{height:"40px"}}></div>
+				<div style={{height:"30px"}}></div>
       </div>
 		);
 		
